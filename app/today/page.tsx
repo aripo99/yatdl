@@ -2,8 +2,9 @@ import { ToDoList } from "@/components/to-do-list"
 
 export default function Home() {
     return (
-        <main className="flex">
+        <div>
+            <p className="mb-6 text-lg">Today - {new Date().toLocaleDateString()}</p>
             <ToDoList />
-        </main>
+        </div>
     )
 }
