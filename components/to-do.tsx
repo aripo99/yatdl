@@ -1,7 +1,15 @@
-export function ToDo() {
+import { Label } from "@/components/ui/label"
+import { RadioGroupItem } from "@/components/ui/radio-group"
+
+interface ToDoProps {
+    id: string;
+}
+
+export function ToDo({ id }: ToDoProps) {
     return (
-        <div>
-            <h1>To Do</h1>
+        <div className="flex items-center space-x-2">
+            <RadioGroupItem value={id} id={id} />
+            <Label htmlFor={id}>To Do {id}</Label>
         </div>
     )
 }
