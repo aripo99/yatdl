@@ -40,7 +40,7 @@ export default function Home() {
                         </p>
 
                         <p>
-                            Try it out, it&apos;s free.
+                            Try it out :)
                         </p>
                     </h2>
                 </div>
