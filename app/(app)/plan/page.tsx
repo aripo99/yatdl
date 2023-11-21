@@ -1,4 +1,5 @@
 import { ToDoList } from "@/components/to-do-list"
+import AddToDo from "@/components/add-to-do"
 
 export default function Home() {
     return (
@@ -7,6 +8,7 @@ export default function Home() {
                 Plan for Tomorrow - {new Date(new Date().setDate(new Date().getDate() + 1)).toLocaleDateString()}
             </p>
             <ToDoList />
+            <AddToDo />
         </div>
     )
 }
