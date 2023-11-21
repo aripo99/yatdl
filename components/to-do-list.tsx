@@ -10,7 +10,7 @@ export async function ToDoList() {
         const client = getSupabaseBrowserClient();
         const sessionResponse = await client.auth.getSession();
         const user = sessionResponse.data?.session?.user;
-        const { data: todos, error } = await client.from("todos").select().eq("user_id", user?.id);
+        const { data: todos, error } = await client.from("todos").select().eq("user_id", user?.id).eq("is_complete", false);
         if (error) {
             console.error(error);
         }
