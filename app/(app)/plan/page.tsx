@@ -8,7 +8,7 @@ export default function Home() {
                 Plan for Tomorrow - {new Date(new Date().setDate(new Date().getDate() + 1)).toLocaleDateString()}
             </p>
             <ToDoList />
-            <AddToDo />
+            <AddToDo path="plan" />
         </div>
     )
 }

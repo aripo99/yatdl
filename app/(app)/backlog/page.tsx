@@ -6,7 +6,7 @@ export default function Home() {
         <div>
             <p className="mb-6 text-lg">Backlog</p>
             <ToDoList />
-            <AddToDo />
+            <AddToDo path="/backlog" />
         </div>
     )
 }

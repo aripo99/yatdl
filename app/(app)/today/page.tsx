@@ -6,7 +6,7 @@ export default function Home() {
         <div>
             <p className="mb-6 text-lg">Today - {new Date().toLocaleDateString()}</p>
             <ToDoList />
-            <AddToDo />
+            <AddToDo path="/today" />
         </div>
     )
 }

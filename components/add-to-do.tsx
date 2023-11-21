@@ -1,22 +1,15 @@
-import getSupabaseBrowserClient from "@/lib/supabase/server-client"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import addToDo from "../lib/actions/add-to-do";
 
-export default function AddToDo() {
-    async function addToDo(formData: FormData) {
-        "use server";
-        const client = getSupabaseBrowserClient();
-        const sessionResponse = await client.auth.getSession();
-        const user = sessionResponse.data?.session?.user;
-        const title = formData.get("title") as string;
-        const { error } = await client.from("todos").insert([{ title, user_id: user?.id }]);
-        if (error) {
-            console.error(error);
-        }
-    }
+interface AddToDoProps {
+    path: string;
+}
 
+export default function AddToDo(props: AddToDoProps) {
     return (
         <form action={addToDo} className="mt-4 flex flex-row">
+            <input type='hidden' name='path' value={props.path} />
             <Input type="text" name="title" className="rounded-md p-2" placeholder="Add a new todo" />
             <Button className="ml-2">Add</Button>
         </form>
