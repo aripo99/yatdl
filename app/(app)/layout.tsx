@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator'
 import AppHeader from '@/components/app-header'
 import { redirect } from 'next/navigation';
 import loadSession from '@/lib/load-session';
-import Goals from '@/components/goals';
+import { Goals } from '@/components/goals';
 
 export const metadata: Metadata = {
   title: 'Yet Another To Do List',
