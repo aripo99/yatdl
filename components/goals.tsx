@@ -4,6 +4,9 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import addGoal from "@/lib/actions/add-goal"
 
 const goals = [
     {
@@ -36,6 +39,11 @@ export default function Goals() {
                     </Card>
                 ))}
             </div>
+            <form action={addGoal}>
+                <Input type="text" name="title" placeholder="Title" />
+                <Input type="text" name="description" placeholder="Description" />
+                <Button className="ml-2">Add</Button>
+            </form>
         </>
     )
 }
