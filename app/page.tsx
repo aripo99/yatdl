@@ -36,7 +36,7 @@ export default function Home() {
                         </p>
 
                         <p>
-                            You only can see today&apos;s tasks, and each day you add tasks for tomorrow or throw them to the backlog.
+                            You only can see today&apos;s tasks, and each day you add tasks for today or throw them to the backlog.
                         </p>
 
                         <p>
@@ -92,7 +92,7 @@ export default function Home() {
                             </h3>
 
                             <div>
-                                Add to dos for today, tomorrow or throw them to the backlog.
+                                Add to dos for today or throw them to the backlog.
                             </div>
                         </div>
 
