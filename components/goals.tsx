@@ -4,11 +4,8 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import addGoal from "@/lib/actions/add-goal"
+import AddGoal from "@/components/add-goal";
 import getSupabaseBrowserClient from "@/lib/supabase/server-client"
-
 
 export async function Goals() {
     const goals = await fetchGoals();
@@ -40,11 +37,7 @@ export async function Goals() {
                     </Card>
                 ))}
             </div>
-            <form action={addGoal}>
-                <Input type="text" name="title" placeholder="Title" />
-                <Input type="text" name="description" placeholder="Description" />
-                <Button className="ml-2">Add</Button>
-            </form>
+            <AddGoal />
         </>
     )
 }
