@@ -5,7 +5,7 @@ export default function Home() {
     return (
         <div>
             <p className="mb-6 text-lg">Backlog</p>
-            <ToDoList />
+            <ToDoList path="/backlog" />
             <AddToDo path="/backlog" />
         </div>
     )

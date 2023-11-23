@@ -7,16 +7,16 @@ import {
 
 const goals = [
     {
+        "title": "Always learning",
+        "description": "I want to learn new things everyday and challenge myself at work"
+    },
+    {
         "title": "Get Promoted",
         "description": "I want to get promoted to ML Engineer II"
     },
     {
         "title": "Become great at Competitive Programming",
         "description": "Do at least 3 problems a day"
-    },
-    {
-        "title": "Always learning",
-        "description": "I want to learn new things everyday and challenge myself at work"
     },
 ]
 

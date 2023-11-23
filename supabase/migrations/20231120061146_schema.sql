@@ -37,6 +37,7 @@ create table todos (
     uuid uuid not null unique default gen_random_uuid(),
     user_id uuid not null references public.users on delete cascade,
     title text,
+    category text CHECK (category IN ('today', 'backlog')),
     is_complete boolean default false,
     created_at timestamptz not null default now()
 );

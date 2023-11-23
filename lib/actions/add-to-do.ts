@@ -9,7 +9,7 @@ export default async function addToDo(formData: FormData) {
     const user = sessionResponse.data?.session?.user;
     const title = formData.get("title") as string;
     const path = formData.get("path") as string;
-    const { error } = await client.from("todos").insert([{ title, user_id: user?.id }]);
+    const { error } = await client.from("todos").insert([{ title, user_id: user?.id, category: path.split("/")[1] }]);
     if (error) {
         console.error(error);
         return { error };
