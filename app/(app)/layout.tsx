@@ -4,6 +4,7 @@ import { Separator } from '@/components/ui/separator'
 import AppHeader from '@/components/app-header'
 import { redirect } from 'next/navigation';
 import loadSession from '@/lib/load-session';
+import Goals from '@/components/goals';
 
 export const metadata: Metadata = {
   title: 'Yet Another To Do List',
@@ -14,10 +15,6 @@ const sidebarNavItems = [
   {
     title: "Today",
     href: "/today",
-  },
-  {
-    title: "Plan",
-    href: "/plan",
   },
   {
     title: "Backlog",
@@ -45,8 +42,11 @@ async function AppLayout({ children }: AppLayoutProps) {
           <aside className="-mx-4 lg:w-1/5">
             <SidebarNav items={sidebarNavItems} />
           </aside>
-          <div className="flex-1 lg:max-w-2xl">
-            {children}
+          <div className="flex-1 space-y-5 mx-auto">
+            <Goals />
+            <div className="lg:max-w-2xl">
+              {children}
+            </div>
           </div>
         </div>
       </div>
