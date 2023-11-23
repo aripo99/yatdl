@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label"
 import updateToDo from "@/lib/actions/update-to-do";
 import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
-import { FaCheck } from 'react-icons/fa';
+import { FaCheck, FaCoins } from 'react-icons/fa';
 
 interface ToDoProps {
     id: string;
@@ -23,8 +23,10 @@ export function ToDo({ id, title }: ToDoProps) {
                 >
                     <FaCheck className="text-green-500" />
                 </Button>
-                <Label htmlFor={id}> {title} </Label>
             </form>
+            <Label htmlFor={id}> {title} </Label>
+            <FaCoins className="text-yellow-400" />
+            <span className="ml-1">x10</span>
         </div>
     )
 }
