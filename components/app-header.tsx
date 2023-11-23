@@ -1,4 +1,5 @@
 import ProfileDropdown from './profile-dropdown';
+import UserCoins from '@/components/user-coins';
 
 function AppHeader() {
     return (
@@ -9,7 +10,10 @@ function AppHeader() {
                     Yet Another To Do List
                 </p>
             </div>
-            <ProfileDropdown />
+            <div className="flex flex-row">
+                <UserCoins />
+                <ProfileDropdown />
+            </div>
         </div>
     )
 }
