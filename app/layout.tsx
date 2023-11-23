@@ -15,7 +15,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
     title: 'Yet Another To Do List',
-    description: 'An opinionated to do list',
+    description: 'An opinionated gamified to do list',
 }
 
 export default function RootLayout({
