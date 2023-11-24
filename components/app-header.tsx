@@ -1,5 +1,5 @@
 import ProfileDropdown from './profile-dropdown';
-import UserCoins from '@/components/user-coins';
+import { UserCoins } from '@/components/user-coins';
 
 function AppHeader() {
     return (
