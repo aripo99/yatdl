@@ -5,14 +5,14 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import AddGoal from "@/components/add-goal";
-import getSupabaseBrowserClient from "@/lib/supabase/server-client"
+import getSupabaseServerClient from "@/lib/supabase/server-client"
 
 export async function Goals() {
     const goals = await fetchGoals();
 
     async function fetchGoals() {
         "use server";
-        const client = getSupabaseBrowserClient();
+        const client = getSupabaseServerClient();
         const sessionResponse = await client.auth.getSession();
         const user = sessionResponse.data?.session?.user;
         const { data: goals, error } = await client.from("goals").select().eq("user_id", user?.id);

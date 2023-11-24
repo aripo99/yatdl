@@ -1,10 +1,10 @@
 "use server";
 
-import getSupabaseBrowserClient from "@/lib/supabase/server-client"
+import getSupabaseServerClient from "@/lib/supabase/server-client"
 import { revalidatePath } from 'next/cache';
 
 export default async function addToDo(formData: FormData) {
-    const client = getSupabaseBrowserClient();
+    const client = getSupabaseServerClient();
     const sessionResponse = await client.auth.getSession();
     const user = sessionResponse.data?.session?.user;
     const title = formData.get("title") as string;
