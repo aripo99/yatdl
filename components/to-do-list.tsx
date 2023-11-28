@@ -1,6 +1,6 @@
 import { ToDo } from './to-do';
 import { RadioGroup } from "@/components/ui/radio-group"
-import getSupabaseServerClient from "@/lib/supabase/server-client"
+import fetchToDos from "@/lib/actions/get-to-dos"
 
 interface ToDoListProps {
     path: string;
@@ -8,19 +8,6 @@ interface ToDoListProps {
 
 export async function ToDoList({ path }: ToDoListProps) {
     const todos = await fetchToDos(path);
-
-    async function fetchToDos(path: string) {
-        "use server";
-        const client = getSupabaseServerClient();
-        const sessionResponse = await client.auth.getSession();
-        const user = sessionResponse.data?.session?.user;
-        const { data: todos, error } = await client.from("todos").select().eq("user_id", user?.id).eq("is_complete", false).eq("category", path.split("/")[1]);
-
-        if (error) {
-            console.error(error);
-        }
-        return todos;
-    }
 
     return (
         <RadioGroup>
