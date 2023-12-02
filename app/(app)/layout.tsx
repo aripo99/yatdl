@@ -42,14 +42,12 @@ async function AppLayout({ children }: AppLayoutProps) {
           <aside className="-mx-4 lg:w-1/5">
             <SidebarNav items={sidebarNavItems} />
           </aside>
-          <div className="flex-1 space-y-5 mx-auto">
+          <div className="flex-1 space-y-5 mx-auto lg:max-w-2xl xl:max-w-3xl">
             <Goals />
-            <div className="lg:max-w-2xl">
-              {children}
-            </div>
+            {children}
           </div>
         </div>
-      </div>
+      </div >
     </>
   )
 }
