@@ -19,9 +19,9 @@ export default function AddToDo(props: AddToDoProps) {
     }
 
     return (
-        <>
+        <div className="flex flex-row">
             <Input type="text" name="title" className="rounded-md p-2" placeholder="Add a new todo" value={title} onChange={(e) => setTitle(e.target.value)} />
-            <Button className="mt-2" onClick={handleAddClick}>Add</Button>
-        </>
+            <Button className="ml-2" onClick={handleAddClick}>Add</Button>
+        </div>
     )
 }
