@@ -24,9 +24,12 @@ export async function Goals() {
 
     return (
         <>
-            <h1 className="mb-6 text-3xl tracking-tighter md:text-4xl">
-                Goals
-            </h1>
+            <div className="flex flex-row justify-between">
+                <h1 className="mb-6 text-3xl tracking-tighter md:text-4xl">
+                    Goals
+                </h1>
+                <AddGoal />
+            </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {goals && goals.map((goal, index) => (
                     <Card key={index}>
@@ -37,7 +40,6 @@ export async function Goals() {
                     </Card>
                 ))}
             </div>
-            <AddGoal />
         </>
     )
 }
