@@ -45,12 +45,21 @@ export default function AddGoal() {
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
-                    <Button
-                        onClick={handleAddClick}
-                        disabled={isPending}
-                    >
-                        Add
-                    </Button>
+                    <div className="flex flex-row space-x-2 justify-between">
+                        <Button
+                            onClick={() => setIsAddingGoal(false)}
+                            variant="ghost"
+                            disabled={isPending}
+                        >
+                            Cancel
+                        </Button>
+                        <Button
+                            onClick={handleAddClick}
+                            disabled={isPending}
+                        >
+                            Add
+                        </Button>
+                    </div>
                 </>
             ) : (
                 <Button onClick={() => setIsAddingGoal(true)}>
