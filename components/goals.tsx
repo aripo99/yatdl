@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/card"
 import AddGoal from "@/components/add-goal";
 import getSupabaseServerClient from "@/lib/supabase/server-client"
+import DeleteGoalButton from "@/components/delete-goal-button";
 
 export async function Goals() {
     const goals = await fetchGoals();
@@ -34,7 +35,10 @@ export async function Goals() {
                 {goals && goals.map((goal, index) => (
                     <Card key={index}>
                         <CardHeader>
-                            <CardTitle>{goal.title}</CardTitle>
+                            <CardTitle className="relative">
+                                <span>{goal.title}</span>
+                                <DeleteGoalButton id={goal.id} />
+                            </CardTitle>
                             <CardDescription>{goal.description}</CardDescription>
                         </CardHeader>
                     </Card>
