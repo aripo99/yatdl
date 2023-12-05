@@ -44,7 +44,7 @@ export default function CompletedToDos() {
             <CollapsibleContent className="space-y-2">
                 {completedToDos && completedToDos.map((todo) => (
                     <div key={todo.id} className="rounded-md border px-4 py-2 font-mono text-sm shadow-sm border-green-950 flex items-center space-x-2">
-                        {todo.title}
+                        <span className="line-through">{todo.title}</span>
                         <FaCoins className="text-yellow-400 ml-2" />
                         <span className="ml-1">x10</span>
                     </div>
