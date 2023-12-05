@@ -13,7 +13,7 @@ export async function ToDoList({ path }: ToDoListProps) {
         <RadioGroup>
             {todos && todos.map((todo) => (
                 <ToDo key={todo.id} id={todo.id} title={todo.title} />
-            ))}
+            )).reverse()}
         </RadioGroup>
     )
 }
