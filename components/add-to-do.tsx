@@ -19,7 +19,7 @@ export default function AddToDo(props: AddToDoProps) {
     }
 
     return (
-        <div className="flex flex-row">
+        <div className="flex flex-row mt-6">
             <Input
                 type="text"
                 name="title"
