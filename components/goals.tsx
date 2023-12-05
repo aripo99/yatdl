@@ -31,9 +31,9 @@ export async function Goals() {
                 </h1>
                 <AddGoal />
             </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {goals && goals.map((goal, index) => (
-                    <Card key={index}>
+            {goals && goals.length > 0 ? goals.map((goal, index) => (
+                <div key={index} className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <Card>
                         <CardHeader>
                             <CardTitle className="relative">
                                 <span>{goal.title}</span>
@@ -42,8 +42,12 @@ export async function Goals() {
                             <CardDescription>{goal.description}</CardDescription>
                         </CardHeader>
                     </Card>
-                ))}
-            </div>
+                </div>
+            )) : (
+                <div>
+                    <p className="text-gray-500">Add a new goal here. Goals constantly remind you of the big picture and help you align your todos with it.</p>
+                </div>
+            )}
         </>
     )
 }
