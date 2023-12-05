@@ -48,7 +48,7 @@ export default function CompletedToDos() {
                         <FaCoins className="text-yellow-400 ml-2" />
                         <span className="ml-1">x10</span>
                     </div>
-                ))}
+                )).reverse()}
             </CollapsibleContent>
         </Collapsible>
     )
