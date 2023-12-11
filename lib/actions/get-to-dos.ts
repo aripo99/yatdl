@@ -16,7 +16,6 @@ async function fetchToDos(path: string, label: string) {
     if (label !== "") {
         query = query.eq("label", label);
     }
-    console.log("here", label);
 
     const { data: todos, error } = await query;
 
