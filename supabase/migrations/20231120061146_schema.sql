@@ -38,8 +38,10 @@ create table todos (
     user_id uuid not null references public.users on delete cascade,
     title text,
     category text CHECK (category IN ('today', 'backlog')),
+    labels text[],
     is_complete boolean default false,
-    created_at timestamptz not null default now()
+    created_at timestamptz not null default now(),
+    updated_at timestamptz not null default now()
 );
 
 alter table todos enable row level security;
