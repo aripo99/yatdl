@@ -17,29 +17,25 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
+import { getLabels } from "@/lib/actions/get-labels"
 
-const labels = [
-    {
-        value: "work",
-        label: "Work",
-    },
-    {
-        value: "school",
-        label: "School",
-    },
-    {
-        value: "hci",
-        label: "Hci",
-    },
-    {
-        value: "ethics",
-        label: "Ethics",
-    },
-]
+interface LabelsComboboxProps {
+    setSelectedLabel: (label: string) => void;
+}
 
-export function LabelsCombobox() {
+export function LabelsCombobox({ setSelectedLabel }: LabelsComboboxProps) {
     const [open, setOpen] = React.useState(false)
     const [value, setValue] = React.useState("")
+    const [labels, setLabels] = React.useState([])
+
+    React.useEffect(() => {
+        const fetchLabels = async () => {
+            const response = await getLabels();
+            const labels = await response
+            setLabels(labels)
+        }
+        fetchLabels()
+    }, [])
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
@@ -66,6 +62,7 @@ export function LabelsCombobox() {
                                 key={framework.value}
                                 value={framework.value}
                                 onSelect={(currentValue) => {
+                                    setSelectedLabel(currentValue === value ? "" : currentValue)
                                     setValue(currentValue === value ? "" : currentValue)
                                     setOpen(false)
                                 }}

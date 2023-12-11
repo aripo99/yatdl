@@ -1,4 +1,4 @@
-import { ToDoList } from "@/components/to-do-list"
+import ToDoList from "@/components/to-do-list"
 import CompletedToDos from "@/components/completed-to-dos"
 import { Separator } from "@/components/ui/separator"
 

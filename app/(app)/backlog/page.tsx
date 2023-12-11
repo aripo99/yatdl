@@ -1,4 +1,4 @@
-import { ToDoList } from "@/components/to-do-list"
+import ToDoList from "@/components/to-do-list"
 import { Separator } from "@/components/ui/separator"
 
 export default function Home() {
