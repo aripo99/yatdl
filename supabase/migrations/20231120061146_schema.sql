@@ -39,6 +39,7 @@ create table todos (
     title text,
     category text CHECK (category IN ('today', 'backlog')),
     is_complete boolean default false,
+    labels text[],
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now()
 );
