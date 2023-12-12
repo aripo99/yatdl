@@ -1,7 +1,7 @@
 create table user_coins (
     id bigint generated always as identity primary key,
     uuid uuid not null unique default gen_random_uuid(),
-    user_id uuid references public.users on delete cascade,
+    user_id uuid references auth.users on delete cascade,
     quantity integer not null default 0,
     created_at timestamptz not null default now()
 );

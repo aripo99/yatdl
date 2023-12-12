@@ -1,7 +1,7 @@
 create table labels (
     id bigint generated always as identity primary key,
     uuid uuid not null unique default gen_random_uuid(),
-    user_id uuid not null references public.users on delete cascade,
+    user_id uuid not null references auth.users on delete cascade,
     name text,
     created_at timestamptz not null default now()
 );
@@ -15,8 +15,8 @@ labels
     with check (auth.uid () = labels.user_id);
 
 create table todo_labels (
-    user_id uuid not null references public.users on delete cascade,
-    todo_id bigint not null references public.todos on delete cascade,
+    user_id uuid not null references auth.users on delete cascade,
+    todo_id bigint not null references public.todos,
     label_id bigint not null references public.labels on delete cascade, 
     primary key (todo_id, label_id)
 );
