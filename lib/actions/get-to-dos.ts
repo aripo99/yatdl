@@ -7,16 +7,20 @@ async function fetchToDos(path: string, label: string) {
     const sessionResponse = await client.auth.getSession();
     const user = sessionResponse.data?.session?.user;
 
-    let query = client.from("todos")
-        .select()
+    let query = client
+        .from("todos")
+        .select(`
+            *,
+            labels!inner(*)
+        `)
         .eq("user_id", user?.id)
         .eq("is_complete", false)
         .eq("category", path.split("/")[1]);
 
     if (label !== "") {
-        query = query.eq("label", label);
+        query = query
+            .eq('labels.name', label.toLowerCase());
     }
-
     const { data: todos, error } = await query;
 
     if (error) {

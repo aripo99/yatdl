@@ -11,7 +11,7 @@ export default async function addToDo(title: string, path: string) {
     // parse out the @labels, removing the @
     const matches = title.match(/@(\w+)/g);
 
-    let labels = [];
+    let labels: string[] = [];
     if (matches) {
         labels = matches.map(match => match.substring(1));
     }
@@ -22,7 +22,13 @@ export default async function addToDo(title: string, path: string) {
         });
     }
 
-    const { error } = await client.from("todos").insert([{ title, user_id: user?.id, category: path.split("/")[1], labels: labels }]);
+    const { error } = await client.rpc('insert_todo', {
+        title,
+        user_id_arg: user?.id,
+        category: path.split("/")[1],
+        labels: labels,
+    });
+
     if (error) {
         console.error(error);
         return { error };
