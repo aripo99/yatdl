@@ -4,8 +4,15 @@ import { Label } from "@/components/ui/label"
 import updateToDo from "@/lib/actions/update-to-do";
 import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
-import { FaCheck, FaCoins, FaTimes } from 'react-icons/fa';
+import { FaCheck, FaCoins, FaTimes, FaExchangeAlt } from 'react-icons/fa';
 import deleteToDo from "@/lib/actions/delete-to-do";
+import moveToDo from "@/lib/actions/move-to-do";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 interface ToDoProps {
     id: string;
@@ -30,11 +37,27 @@ export function ToDo({ id, title }: ToDoProps) {
                 <FaCoins className="text-yellow-400" />
                 <span className="ml-1">x10</span>
             </div>
-            <form onSubmit={() => deleteToDo(id)}>
-                <Button variant="ghost" className="text-red-500">
-                    <FaTimes />
-                </Button>
-            </form>
+            <div className="flex flex-row">
+                <form onSubmit={() => moveToDo(id, pathname)}>
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <Button variant="ghost">
+                                    <FaExchangeAlt />
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent side="top" align="center">
+                                {pathname === '/today' ? 'Move to backlog' : 'Move to today'}
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+                </form>
+                <form onSubmit={() => deleteToDo(id)}>
+                    <Button variant="ghost" className="text-red-500">
+                        <FaTimes />
+                    </Button>
+                </form>
+            </div>
         </div>
     )
 }
