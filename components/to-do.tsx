@@ -31,16 +31,18 @@ export function ToDo({ id, title }: ToDoProps) {
                 <FaCoins className="text-yellow-400" />
                 <span className="ml-1">x10</span>
             </div>
-            <form onSubmit={() => moveToDo(id)}>
-                <Button variant="ghost" className="text-red-500">
-                    <FaTimes />
-                </Button>
-            </form>
-            <form onSubmit={() => deleteToDo(id)}>
-                <Button variant="ghost" className="text-red-500">
-                    <FaTimes />
-                </Button>
-            </form>
+            <div className="flex flex-row">
+                <form onSubmit={() => moveToDo(id, pathname)}>
+                    <Button variant="ghost" className="text-red-500">
+                        <FaTimes />
+                    </Button>
+                </form>
+                <form onSubmit={() => deleteToDo(id)}>
+                    <Button variant="ghost" className="text-red-500">
+                        <FaTimes />
+                    </Button>
+                </form>
+            </div>
         </div>
     )
 }
