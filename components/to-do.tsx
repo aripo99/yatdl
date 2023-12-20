@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { FaCheck, FaCoins, FaTimes } from 'react-icons/fa';
 import deleteToDo from "@/lib/actions/delete-to-do";
+import moveToDo from "@/lib/actions/move-to-do";
 
 interface ToDoProps {
     id: string;
@@ -30,6 +31,11 @@ export function ToDo({ id, title }: ToDoProps) {
                 <FaCoins className="text-yellow-400" />
                 <span className="ml-1">x10</span>
             </div>
+            <form onSubmit={() => moveToDo(id)}>
+                <Button variant="ghost" className="text-red-500">
+                    <FaTimes />
+                </Button>
+            </form>
             <form onSubmit={() => deleteToDo(id)}>
                 <Button variant="ghost" className="text-red-500">
                     <FaTimes />
