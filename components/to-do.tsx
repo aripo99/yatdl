@@ -13,6 +13,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip"
+import { useState } from "react"
 
 interface ToDoProps {
     id: string;
@@ -21,28 +22,52 @@ interface ToDoProps {
 
 export function ToDo({ id, title }: ToDoProps) {
     const pathname = usePathname()
+    const [isProcessing, setIsProcessing] = useState(false)
+    const [isCompleted, setIsCompleted] = useState(false)
+
+    function handleCompleteToDo(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault()
+        setIsCompleted(true)
+        setIsProcessing(true)
+        updateToDo(id, pathname)
+    }
+
+    function handleMoveToDo(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault()
+        setIsProcessing(true)
+        moveToDo(id, pathname)
+    }
+
+    function handleDeleteToDo(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault()
+        setIsProcessing(true)
+        deleteToDo(id)
+    }
 
     return (
         <div className="flex justify-between">
             <div className="flex items-center space-x-2">
-                <form onSubmit={() => updateToDo(id, pathname)}>
+                <form onSubmit={handleCompleteToDo}>
                     <Button
                         variant="ghost"
                         type="submit"
+                        disabled={isProcessing}
                     >
                         <FaCheck className="text-green-500" />
                     </Button>
                 </form>
-                <Label htmlFor={id}>{title}</Label>
+                <Label htmlFor={id} className={`${isCompleted ? 'line-through' : ''}`}>
+                    {title}
+                </Label>
                 <FaCoins className="text-yellow-400" />
                 <span className="ml-1">x10</span>
             </div>
             <div className="flex flex-row">
-                <form onSubmit={() => moveToDo(id, pathname)}>
+                <form onSubmit={handleMoveToDo}>
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger>
-                                <Button variant="ghost">
+                                <Button variant="ghost" disabled={isProcessing}>
                                     <FaExchangeAlt />
                                 </Button>
                             </TooltipTrigger>
@@ -52,8 +77,8 @@ export function ToDo({ id, title }: ToDoProps) {
                         </Tooltip>
                     </TooltipProvider>
                 </form>
-                <form onSubmit={() => deleteToDo(id)}>
-                    <Button variant="ghost" className="text-red-500">
+                <form onSubmit={handleDeleteToDo}>
+                    <Button variant="ghost" className="text-red-500" disabled={isProcessing}>
                         <FaTimes />
                     </Button>
                 </form>
