@@ -11,11 +11,14 @@ interface AddToDoProps {
 
 export default function AddToDo(props: AddToDoProps) {
     const [title, setTitle] = useState('');
+    const [addingToDo, setAddingToDo] = useState(false);
 
     const handleAddClick = async (event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>) => {
+        setAddingToDo(true);
         event.preventDefault();
         await addToDo(title, props.path);
         setTitle('');
+        setAddingToDo(false);
     }
 
     return (
@@ -34,7 +37,7 @@ export default function AddToDo(props: AddToDoProps) {
                     }
                 }}
             />
-            <Button className="ml-2" onClick={handleAddClick}>
+            <Button className="ml-2" onClick={handleAddClick} disabled={addingToDo}>
                 Add
             </Button>
         </div>
