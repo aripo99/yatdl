@@ -38,11 +38,11 @@ async function AppLayout({ children }: AppLayoutProps) {
       <div className="space-y-6 p-10 pb-16 md:block">
         <AppHeader />
         <Separator className="my-6" />
-        <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
+        <div className="flex flex-col space-y-8 lg:flex-row lg:space-y-0">
           <aside className="-mx-4 lg:w-1/5">
             <SidebarNav items={sidebarNavItems} />
           </aside>
-          <div className="flex-1 space-y-5 mx-auto lg:max-w-2xl xl:max-w-3xl">
+          <div className="flex-1 md:mx-12 space-y-5">
             <Goals />
             {children}
           </div>
