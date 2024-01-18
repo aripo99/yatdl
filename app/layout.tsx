@@ -7,6 +7,7 @@ import AuthChangeListener from '@/components/auth-change-listener';
 import UserSessionProvider from "@/components/user-session-provider";
 import loadSession from "@/lib/load-session";
 import { ThemeProvider } from '@/components/theme-provider';
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,7 +32,10 @@ export default function RootLayout({
                 <ThemeProvider>
                     <AuthChangeListener session={session}>
                         <UserSessionProvider session={session}>
-                            <Providers>{children}</Providers>
+                            <Providers>
+				{children}
+				<Analytics />
+			    </Providers>
                         </UserSessionProvider>
                     </AuthChangeListener>
                 </ThemeProvider>
