@@ -46,7 +46,7 @@ export default function AddGoal() {
                     <DialogHeader>
                         <DialogTitle>Add a Goal</DialogTitle>
                         <DialogDescription>
-                            Goals remind you of the bigger picture. Ideally they help your to dos align with your values.
+                            Goals remind you of the bigger picture. Ideally they help your to dos align with what you actually want to achieve.
                         </DialogDescription>
                         <Input
                             type="text"
